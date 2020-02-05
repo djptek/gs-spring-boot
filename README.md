@@ -1,18 +1,34 @@
 # gs-spring-boot
-Building an Application with Spring Boot :: Learn how to build an application with minimal configuration.
+This is Demo Code intended to:
+
+Leverage `springboot` to create a minimal web application which listens for Requests on the default port 8888
+On receipt of a request, query `Postgresql` on the default port of 5432 again using `springframework` this time jdbc 
+
+Expected output in the browser is:
+
+```
+DB values:
+Test[my_int=1000]
+Test[my_int=1001]
+Test[my_int=1002]
+Test[my_int=1003]
+Test[my_int=1004]
+```
 
 This work includes *solely code* and is derived from merging: 
 
 https://github.com/spring-guides/gs-spring-boot
 https://github.com/spring-guides/gs-relational-data-access
 
-with some additions for OOTB compatibility with
+with some additions for compatibility with
 
 https://github.com/postgres/postgres
 
-The query is hardwired here:[https://github.com/djptek/gs-spring-boot/src/main/java/com/example/springboot/HelloController.java#L21]
+You will need to Install & start Postgresql using the appropriate means for your platform see:[https://www.postgresql.org/download/]
 
-To setup Postgresql please run this script:[TBC]
+The query is hardwired here:[https://github.com/djptek/gs-spring-boot/src/main/java/com/example/springboot/HelloController.java]
 
-For License see the Upstream code license here:[https://github.com/djptek/gs-spring-boot/blob/master/LICENSE.code.txt]
+To setup Postgresql please set the privileges on this script:[https://github.com/djptek/gs-spring-boot/setup_hellodb.sh] such that the `postgres` user can run this script in the original directory in order to access the accompanying sql [https://github.com/djptek/gs-spring-boot/setup_hellodb.sql]
+
+For License see the Upstream code license here:[https://github.com/djptek/gs-spring-boot/LICENSE.code.txt]
 
