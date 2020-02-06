@@ -19,9 +19,15 @@ public class HelloController {
 		builder.append("DB values:");
 		jdbcTemplate.query(
         		"SELECT my_int FROM text", 
-        		(rs, rowNum) -> new String(new TestDB(rs.getShort("my_int")).toString())
-                ).forEach(testDBRow -> builder.append("<br>").append(testDBRow));
+        		(rs, rowNum) -> new TestDBRow(rs.getInt("my_int"))
+               	).forEach(testDBRow -> {
+			builder.append("<br>").append(testDBRow.toString());
+			jdbcTemplate.query(
+        			"SELECT COUNT(my_int) FROM test WHERE my_int = ?", 
+				new Object[] { testDBRow.my_int() },
+				(subRs, subRowNum) -> subRs.getInt("count")
+			).forEach(count -> builder.append("-").append(count.toString()));
+		});
 		return builder.toString();
 	}
-
 }
