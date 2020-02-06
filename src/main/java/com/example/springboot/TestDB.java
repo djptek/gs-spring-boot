@@ -1,9 +1,9 @@
 package com.example.springboot;
 
 public class TestDB{
-  private long my_int;
+  private short my_int;
 
-  public TestDB(long my_int) {
+  public TestDB(short my_int) {
     this.my_int = my_int;
   }
 

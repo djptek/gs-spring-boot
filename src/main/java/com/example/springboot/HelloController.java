@@ -18,8 +18,8 @@ public class HelloController {
 		StringBuilder builder = new StringBuilder();
 		builder.append("DB values:");
 		jdbcTemplate.query(
-        		"SELECT my_int FROM test", 
-        		(rs, rowNum) -> new String(new TestDB(rs.getLong("my_int")).toString())
+        		"SELECT my_int FROM text", 
+        		(rs, rowNum) -> new String(new TestDB(rs.getShort("my_int")).toString())
                 ).forEach(testDBRow -> builder.append("<br>").append(testDBRow));
 		return builder.toString();
 	}
