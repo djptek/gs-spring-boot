@@ -29,7 +29,7 @@ public class HelloController {
 			try {
     				transaction.setType(Transaction.TYPE_REQUEST);
     				transaction.setName("HelloController#Java8forEach:"+testDBRow.toString());
-				builder.append("<br>").append(testDBRow.toString());
+				builder.append(",").append(testDBRow.toString());
 				jdbcTemplate.query(
         				"SELECT COUNT(my_int) FROM test WHERE my_int = ?", 
 					new Object[] { testDBRow.my_int() },
