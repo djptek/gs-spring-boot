@@ -32,3 +32,14 @@ To setup Postgresql please set the privileges on this script:[https://github.com
 
 For License see the Upstream code license here:[https://github.com/djptek/gs-spring-boot/LICENSE.code.txt]
 
+To Start the service, build with:
+
+./gradlew build 
+
+and then start using e.g. 
+
+$ java -javaagent:elastic-apm-agent-1.15.0.jar \
+    elastic.apm.service_name=HelloController \
+    elastic.apm.server_url=http://localhost:8200 \
+    elastic.apm.application_packages=com.example.HelloController \
+    -jar git/gs-spring-boot/build/libs/spring-boot-0.0.1-SNAPSHOT.jar
