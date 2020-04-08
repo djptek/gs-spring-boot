@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import co.elastic.apm.api.ElasticApm;
 import co.elastic.apm.api.Scope;
+import co.elastic.apm.api.Span;
 import co.elastic.apm.api.Transaction;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,9 +25,9 @@ public class HelloController {
 		StringBuilder builder = new StringBuilder();
 		builder.append("DB values");
 		Transaction transaction = ElasticApm.startTransactionWithRemoteParent(
-			traceparent -> request.getHeader("traceparent"));
+			header -> request.getHeader(header));
 		try (final Scope scope = transaction.activate()) {
-        		//transaction.setName("DB call");
+			ElasticApm.currentSpan().setName("try catch block");
 			jdbcTemplate.query(
         			"SELECT my_int FROM test",
         			(rs, rowNum) -> new String(new TestDBRow(rs.getInt("my_int")).toString())
