@@ -26,7 +26,8 @@ public class HelloController {
 		builder.append("DB values");
 		Transaction transaction = ElasticApm.startTransactionWithRemoteParent(
 			header -> request.getHeader(header));
-		try (final Scope scope = transaction.activate()) {
+		//try (final Scope scope = transaction.activate()) {
+		try {
 			ElasticApm.currentSpan().setName("try catch block");
 			jdbcTemplate.query(
         			"SELECT my_int FROM test",
